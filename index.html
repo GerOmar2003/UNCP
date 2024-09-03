@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal de Matrícula UNCP</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="logo.png" type="image/png"> <!-- Favicon -->
+    <script>
+        function mostrarAsesoramiento() {
+            document.getElementById('form-matricula').style.display = 'none';
+            document.getElementById('form-asesoramiento').style.display = 'block';
+        }
+
+        function validarMatricula() {
+            document.getElementById('form-asesoramiento').style.display = 'none';
+            window.location.href = 'pago.html'; // Redirige a la página de pago
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <img src="logo.png" alt="Logo UNCP" id="logo">
+            <nav>
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#matricula">Matrícula</a></li>
+                    <li><a href="#asesoramiento">Asesoramiento Académico</a></li>
+                    <li><a href="#informacion">Información</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="matricula">
+            <div class="container">
+                <h2>Matrícula en Línea</h2>
+                <form id="form-matricula" onsubmit="mostrarAsesoramiento(); return false;">
+                    <label for="nombre">Nombre Completo:</label>
+                    <input type="text" id="nombre" name="nombre" required>
+
+                    <label for="dni">Número de DNI:</label>
+                    <input type="text" id="dni" name="dni" required>
+
+                    <label for="email">Correo Electrónico:</label>
+                    <input type="email" id="email" name="email" required>
+
+                    <label for="telefono">Número de Teléfono:</label>
+                    <input type="tel" id="telefono" name="telefono">
+
+                    <label for="carrera">Carrera:</label>
+                    <select id="carrera" name="carrera" required>
+                        <option value="">Seleccione una carrera</option>
+                        <option value="Ingeniería">Ingeniería</option>
+                        <option value="Arquitectura">Arquitectura</option>
+                        <option value="Medicina">Medicina</option>
+                    </select>
+
+                    <label for="ciclo">Ciclo:</label>
+                    <select id="ciclo" name="ciclo" required>
+                        <option value="">Seleccione un ciclo</option>
+                        <option value="I">I</option>
+                        <option value="II">II</option>
+                        <option value="III">III</option>
+                        <option value="IV">IV</option>
+                        <option value="V">V</option>
+                        <option value="VI">VI</option>
+                        <option value="VII">VII</option>
+                        <option value="VIII">VIII</option>
+                        <option value="IX">IX</option>
+                        <option value="X">X</option>
+                    </select>
+
+                    <label for="cursos">Cursos a Matricular:</label>
+                    <input type="text" id="cursos" name="cursos" placeholder="Ingrese los cursos separados por coma">
+
+                    <button type="submit">Enviar Matrícula</button>
+                </form>
+
+                <!-- Formulario de Asesoramiento -->
+                <div id="form-asesoramiento" style="display: none;">
+                    <h3>Asesoramiento Académico</h3>
+                    <p>Aquí se mostrarán las recomendaciones para los cursos basados en:</p>
+                    <ul>
+                        <li>Horario disponible</li>
+                        <li>Cantidad de créditos</li>
+                        <li>Ciclo actual</li>
+                    </ul>
+                    <button type="button" class="btn" onclick="validarMatricula()">Validar Matrícula</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Universidad Nacional del Centro del Perú. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+</body>
+</html>

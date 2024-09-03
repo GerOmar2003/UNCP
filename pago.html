@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medio de Pago - UNCP</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="logo.png" type="image/png"> <!-- Favicon -->
+    <script>
+        function mostrarCamposPago() {
+            var metodo = document.getElementById('medio-pago').value;
+            document.getElementById('campos-tarjeta').style.display = (metodo === 'tarjeta') ? 'block' : 'none';
+            document.getElementById('campos-yape').style.display = (metodo === 'yape') ? 'block' : 'none';
+            document.getElementById('campos-otros').style.display = (metodo === 'otros') ? 'block' : 'none';
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <img src="logo.png" alt="Logo UNCP" id="logo">
+        </div>
+    </header>
+
+    <main>
+        <section id="pago">
+            <div class="container">
+                <h2>Medio de Pago</h2>
+                <form action="confirmacion.html" method="post">
+                    <label for="medio-pago">Seleccione su medio de pago:</label>
+                    <select id="medio-pago" name="medio-pago" onchange="mostrarCamposPago()" required>
+                        <option value="">Seleccione un medio</option>
+                        <option value="tarjeta">Tarjeta de Crédito/Débito</option>
+                        <option value="yape">Yape</option>
+                        <option value="otros">Otros</option>
+                    </select>
+
+                    <!-- Campos para pago con tarjeta -->
+                    <div id="campos-tarjeta" style="display: none;">
+                        <label for="numero-tarjeta">Número de Tarjeta:</label>
+                        <input type="text" id="numero-tarjeta" name="numero-tarjeta" placeholder="1234 5678 9012 3456">
+
+                        <label for="fecha-expiracion">Fecha de Expiración:</label>
+                        <input type="text" id="fecha-expiracion" name="fecha-expiracion" placeholder="MM/AA">
+
+                        <label for="cvv">CVV:</label>
+                        <input type="text" id="cvv" name="cvv" placeholder="123">
+                    </div>
+
+                    <!-- Campos para pago con Yape -->
+                    <div id="campos-yape" style="display: none;">
+                        <label for="archivo-yape">Subir Comprobante de Pago (JPG, PNG, PDF):</label>
+                        <input type="file" id="archivo-yape" name="archivo-yape" accept=".jpg, .png, .pdf">
+                    </div>
+
+                    <!-- Campos para otros métodos de pago -->
+                    <div id="campos-otros" style="display: none;">
+                        <label for="archivo-otros">Subir Comprobante de Pago (JPG, PNG, PDF):</label>
+                        <input type="file" id="archivo-otros" name="archivo-otros" accept=".jpg, .png, .pdf">
+                    </div>
+
+                    <button type="submit" class="btn">Finalizar Matrícula</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Universidad Nacional del Centro del Perú. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+</body>
+</html>
